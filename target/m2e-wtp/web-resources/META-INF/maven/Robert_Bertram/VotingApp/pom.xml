@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Robert_Bertram</groupId>
+  <artifactId>VotingApp</artifactId>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  <name>VotingApp Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+   <properties>
+  	<springfrawork.version>5.1.0.RELEASE</springfrawork.version>
+  	<springsecurity.version>5.1.0.RELEASE</springsecurity.version>
+  	
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  
+  <dependencies>
+  <!--  Make sure spring framework and security are in sync! -->
+	<dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-web</artifactId>
+	  <version>5.1.0.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-config</artifactId>
+	  <version>5.1.0.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-taglibs</artifactId>
+	  <version>5.1.0.RELEASE</version>
+	</dependency>
+		
+  	<dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-webmvc</artifactId>
+	  <version>5.1.0.RELEASE</version>
+	</dependency>
+  
+  	<dependency>
+	  <groupId>javax.servlet.jsp</groupId>
+	  <artifactId>jsp-api</artifactId>
+	  <version>2.2.1-b03</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>javax.servlet.jsp</groupId>
+	  <artifactId>javax.servlet.jsp-api</artifactId>
+	  <version>2.3.3</version>
+	</dependency>
+
+  	<dependency>
+	  <groupId>javax.servlet</groupId>
+	  <artifactId>javax.servlet-api</artifactId>
+	  <version>4.0.1</version>
+	</dependency>
+	
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>
+	<!-- Add MySQL and C3PO support -->
+	<dependency>
+	  <groupId>mysql</groupId>
+	  <artifactId>mysql-connector-java</artifactId>
+	  <version>8.0.12</version>
+	</dependency>
+	<dependency>
+	  <groupId>com.mchange</groupId>
+	  <artifactId>c3p0</artifactId>
+	  <version>0.9.5.2</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.thymeleaf</groupId>
+	  <artifactId>thymeleaf</artifactId>
+	  <version>3.0.9.RELEASE</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.thymeleaf</groupId>
+	  <artifactId>thymeleaf-spring5</artifactId>
+	  <version>3.0.9.RELEASE</version>
+	</dependency>
+  </dependencies>
+  <build>
+    <finalName>webapp</finalName>
+    <!-- Tells Maven that we do not need a web.xml -->
+    	<pluginManagement>
+    		<plugins>
+    			<plugin>
+    				<groupId>org.apache.maven.plugins</groupId>
+    				<artifactId>maven-war-plugin</artifactId>
+    				<version>3.2.0</version>
+    			</plugin>
+    		</plugins>
+    	</pluginManagement>
+  </build>
+</project>
