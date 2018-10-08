@@ -15,4 +15,10 @@ public class MainController {
 	public String loginPage() {
 		return "index";
 	}
+	
+	//temporary route to get front end started
+	@GetMapping("/webapp/login")
+	public String loginPage2() {
+		return "index";
+	}
 }

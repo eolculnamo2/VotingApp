@@ -1,19 +1,27 @@
-var path = require('path')
+var path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
-    entry: './components/main.js',
+    entry: './src/main.js',
     output: {
         path: path.resolve('./bundle'),
         filename: 'bundle.js'
     },
+    //watch: true,
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
+    plugins: [
+              new CleanWebpackPlugin(['assets/dist']),
+            ],
     devServer: {
-        //contentBase: path.join(__dirname, 'public'),
         compress: true,
-        port: 9000,
+        port: 3000,
         proxy: {
-            '/': 'http://127.0.0.1:8080/picture-dashboard/'
+            '/': 'http://127.0.0.1:8080/'
           }
       },
-    //watch: true,
     module: {
         rules: [
             {
