@@ -37,10 +37,13 @@ export default {
         }
     },
     created(){
-        console.log("created")
-        fetch('/get-homepage-data')
-        .then( res => res.json() )
-        .then( data => this.dummyData = data);
+        // console.log("created")
+        // fetch('/get-homepage-data')
+        // .then( res => res.json() )
+        // .then( data => {
+        //     console.log(data)
+        //     this.dummyData = data
+        //     });
     }
 }
 </script>

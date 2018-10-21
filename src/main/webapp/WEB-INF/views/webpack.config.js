@@ -1,21 +1,23 @@
-var path = require('path');
+const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+//dev-server works at base of directory for HTML i.e. bundle.js inst bundle.bundle.js
 module.exports = {
     entry: './src/main.js',
     output: {
         path: path.resolve('./bundle'),
         filename: 'bundle.js'
     },
-    //watch: true,
     optimization: {
         splitChunks: {
             chunks: 'all'
         }
     },
+    devtool: 'source-map',
     plugins: [
-              new CleanWebpackPlugin(['assets/dist']),
+              new CleanWebpackPlugin(['bundle']),
             ],
     devServer: {
+        contentBase: path.resolve('./bundle'),
         compress: true,
         port: 3000,
         proxy: {

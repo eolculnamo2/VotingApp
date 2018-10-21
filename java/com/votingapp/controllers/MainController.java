@@ -1,7 +1,13 @@
 package com.votingapp.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.votingapp.models.NewChart;
 
 @Controller
 public class MainController {
@@ -16,9 +22,19 @@ public class MainController {
 		return "index";
 	}
 	
-	//temporary route to get front end started
-	@GetMapping("/webapp/login")
-	public String loginPage2() {
+	@GetMapping("/new-chart")
+	public String newChart() {
+		return "index";
+	}
+	
+	@RequestMapping("/create-new-chart")
+	public String createNewChart(HttpServletRequest request, Model model) {
+		String question = request.getParameter("question");
+		String option = request.getParameter("option");
+		int value = Integer.parseInt(request.getParameter("value"));
+		String creator = request.getParameter("creator");
+		
+		new NewChart(question,option,value,creator);
 		return "index";
 	}
 	

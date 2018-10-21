@@ -23,9 +23,7 @@ public class AppConfig implements WebMvcConfigurer {
 	}
 	
 	// equivalent for <mvc:default-servlet-handler/> tag
-	 public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
+
 	
 	@Bean
 	@Description("Thymeleaf Template Resolver")
