@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 public class NewChart {
 	
-	public NewChart(String question, String option, int value, String creator) {
+	public NewChart(String question, String option, String creator) {
 		SessionFactory factory = new Configuration()
 		.configure()
 		.addAnnotatedClass(Chart.class)
@@ -17,7 +17,7 @@ public class NewChart {
 		Session session = factory.getCurrentSession();
 		
 		try {
-			Chart newChart = new Chart(question,option,value,creator);
+			Chart newChart = new Chart(question,option,creator);
 			session.beginTransaction();
 			session.save(newChart);
 			session.getTransaction().commit();

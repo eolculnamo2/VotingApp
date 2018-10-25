@@ -17,5 +17,15 @@ export default {
         padding: 0;
         background-color: #fafafa;
     }
+
+    input {
+        padding: .35em 1em;
+        border-radius: 3px;
+        border: 1px solid #999;
+    }
+    button {
+        outline: none;
+        cursor: pointer;
+    }
 </style>
 

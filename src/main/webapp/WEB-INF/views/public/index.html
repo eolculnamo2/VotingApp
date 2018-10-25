@@ -10,7 +10,16 @@
 	<div id="app">
 		<App></App>
 	</div>
-	<script src="1.bundle.js"></script>
+	<!-- script src will needs changed for production build vs webpack-dev-server -->
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		_csrf_token = /*[[${_csrf.token}]]*/ '';
+		_csrf_param_name = /*[[${_csrf.parameterName}]]*/ '';
+		/*]]>*/
+
+	</script>
+	
+	<script src="vendors.bundle.js"></script>
 	<script src="bundle.js"></script>
 </body>
 </html>

@@ -4,12 +4,18 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     entry: './src/main.js',
     output: {
-        path: path.resolve('./bundle'),
+        publicPath: '/',
         filename: 'bundle.js'
     },
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all',
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors'
+                  }
+            }
         }
     },
     devtool: 'source-map',
@@ -17,7 +23,8 @@ module.exports = {
               new CleanWebpackPlugin(['bundle']),
             ],
     devServer: {
-        contentBase: path.resolve('./bundle'),
+        contentBase: path.join(__dirname,'public'),
+        publicPath: '/',
         compress: true,
         port: 3000,
         proxy: {

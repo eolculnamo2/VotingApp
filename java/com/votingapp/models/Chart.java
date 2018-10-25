@@ -64,7 +64,7 @@ public class Chart {
 		this.creator = creator;
 	}
 	
-	public Chart(String question, String option, int value, String creator) {
+	public Chart(String question, String option, String creator) {
 		this.question = question;
 		this.option = option;
 		this.value = value;
