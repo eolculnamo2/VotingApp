@@ -76,8 +76,7 @@ export default {
                     creator: this.creator
                 }
 
-            payload[global._csrf_param_name] = global._csrf_token;
-            console.log(JSON.stringify(payload));
+            //payload[global._csrf_param_name] = global._csrf_token;
 
             fetch('/create-new-chart',{
             method: "POST",

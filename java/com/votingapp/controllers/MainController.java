@@ -32,9 +32,7 @@ public class MainController {
 	@RequestMapping(value="/create-new-chart", method= RequestMethod.POST)
 	@ResponseBody
 	public String createNewChart(HttpServletRequest request, Model model) {
-		
-		System.out.println(request);
-		
+
 		String question = request.getParameter("question");
 		String option = request.getParameter("option");
 		String creator = request.getParameter("creator");

@@ -28,6 +28,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		//auth.jdbcAuthentication().dataSource(data);
 	}
 	
+	@Override
+	protected void configure (HttpSecurity http) throws Exception {
+	    http.csrf().disable();
+	}
 	//need to add registration
 //	@Override
 //	protected void configure(HttpSecurity http) throws Exception {
