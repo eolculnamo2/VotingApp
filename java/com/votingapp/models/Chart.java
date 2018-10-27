@@ -15,11 +15,9 @@ public class Chart {
 	@Column(name="question")
 	private String question;
 	
-	@Column(name="option")
+	@Column(name="`option`")
 	private String option;
 	
-	@Column(name="value")
-	private int value;
 	
 	@Column(name="creator")
 	private String creator;
@@ -48,14 +46,6 @@ public class Chart {
 		this.option = option;
 	}
 
-	public int getValue() {
-		return value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
-	}
-
 	public String getCreator() {
 		return creator;
 	}
@@ -67,7 +57,6 @@ public class Chart {
 	public Chart(String question, String option, String creator) {
 		this.question = question;
 		this.option = option;
-		this.value = value;
 		this.creator = creator;
 	}
 

@@ -72,7 +72,7 @@ export default {
         createChart(){
             let payload = {
                     question: this.question,
-                    options: this.options,
+                    option: JSON.stringify(this.options),
                     creator: this.creator
                 }
 

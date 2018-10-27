@@ -1,5 +1,6 @@
 package com.votingapp.models;
 
+
 //import javax.security.auth.login.Configuration;
 
 import org.hibernate.Session;
