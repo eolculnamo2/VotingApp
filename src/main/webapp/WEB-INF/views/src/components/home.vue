@@ -1,13 +1,13 @@
 <template>
     <div class="list-wrap">
         <div :key="x.title+i" v-for="(x,i) in dummyData" class="title-row">
-            <a href="/survey">
+            <a :href="'/survey/'+x.id">
                 <div>
-                    {{x.title}}
+                    {{x.question}}
                 </div>
             </a>
             <div>
-                {{x.user}}
+                {{x.creator}}
             </div>
         </div>
     </div>
@@ -17,33 +17,16 @@ export default {
     name: 'home',
     data() {
         return {
-            dummyData: [
-                {
-                    title: 'Favorite Color',
-                    user: 'Rob',
-                    id: '123'
-                },
-                {
-                    title: 'Favorite Color',
-                    user: 'Rob',
-                    id: '223'
-                },
-                {
-                    title: 'Favorite Color',
-                    user: 'Rob',
-                    id: '323'
-                }
-            ]
+            dummyData: []
         }
     },
     created(){
-        // console.log("created")
-        // fetch('/get-homepage-data')
-        // .then( res => res.json() )
-        // .then( data => {
-        //     console.log(data)
-        //     this.dummyData = data
-        //     });
+        fetch('/get-charts')
+        .then( res => res.json() )
+        .then( data => {
+            console.log(data)
+            this.dummyData = data
+            });
     }
 }
 </script>
@@ -61,8 +44,8 @@ export default {
     .title-row {
         display: flex;
         justify-content: space-between;
-        padding: 1em;
-        width: 90%;
+        padding: 1em 5em;
+        width: 70%;
         margin: .5em 0;
         background-color: #ffffff;
         border: 1px solid #dadada;

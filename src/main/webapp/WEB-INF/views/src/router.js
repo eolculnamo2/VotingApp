@@ -4,6 +4,6 @@ import NewChart from './components/new-chart.vue';
 
 export default [
     {path: '/', component: Home},
-    {path: '/survey', component: Survey},
+    {path: '/survey/:id', component: Survey},
     {path: '/new-chart', component: NewChart}
 ]

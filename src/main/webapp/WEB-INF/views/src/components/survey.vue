@@ -1,58 +1,56 @@
 <template>
     <div>
-        <span id ="graph-wrap">
-            <canvas id="line-chart" width="700px" height="400px">
-            </canvas>
-        </span>
+        <canvas id="canvas-chart" width="400px" height="300px"></canvas>
     </div>
+    
 </template>
 <script>
-import 'graph.js';
+import Chart from 'chart.js'
 export default {
-    data(){
+    data() {
         return {
-            question: {
-                title: 'Grade in School',
-                options: ['A','B'],
-                answers: [20,25]
+            chartInfo: {
+                question: "Sample",
+                options: ["A","B"],
+                creator: "Joe"
             }
         }
     },
-    mounted(){
-        this.lineGraph();
+    mounted() {
+        Chart.defaults.global.defaultFontSize= 35;
+        this.renderChart();  
     },
     methods: {
-         lineGraph() {
-                
-                document.getElementById('line-chart').remove()
-                document.getElementById('graph-wrap').innerHTML=`<canvas id="line-chart" width="700px" height="400px"></canvas>`
-                
-                let lineChart = document.getElementById('line-chart').getContext("2d");
-                Chart.defaults.global.animation.duration = 300
-                new Chart(lineChart, {
-                    type: 'line',
-                    data: {
-                    labels: this.question.map(x => x.options),
-                    datasets: [{
-                        label: "Close",
-                        fill: true,
-                        borderColor: '#edad29',
-                        borderWidth: 1,
-                        pointRadius: 1,
-                        backgroundColor: 'rgba(237, 128, 41, 0.2)',
-                        data: this.question.map(x => x.answers),
-                }]
+        renderChart() {
+            new Chart(document.getElementById("canvas-chart"), {
+                type: 'bar',
+                data: {
+                labels: this.chartInfo.options.map( x => x),
+                datasets: [
+                    {
+                    label: "Population (millions)",
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                    data: [2478,5267,734,784,433]
+                    }
+                ]
                 },
                 options: {
-                    legend: {
-                    display: false
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: this.chartInfo.question
+                        }
                 }
-            }
-        });
-    }
+            });
+        }
     }
 }
 </script>
 <style lang="scss" scoped>
+#canvas-chart{
+    margin: auto;
+    height: 400px !important;
+    width: 500px !important;
+}
 
 </style>

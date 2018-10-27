@@ -1,10 +1,9 @@
 <template>
     <div>
         <div class="main-header-wrap">
-            <h1>
+            <a href="/"><h1>
                 HEADER
-            </h1>
-           
+            </h1></a>
              <a href="/new-chart"><p>
                 New Chart
             </p></a>
