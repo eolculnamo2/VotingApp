@@ -83,6 +83,7 @@ export default {
             body: JSON.stringify(payload),
             headers: { "Content-Type": "application/json" }
             })
+            .then(() => window.location.pathname = '/')
         }
     }
     //add get request with stringified JSON to store in BE.

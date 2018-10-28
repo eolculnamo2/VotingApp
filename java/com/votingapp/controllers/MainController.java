@@ -1,12 +1,9 @@
 package com.votingapp.controllers;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +16,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.votingapp.functions.HelperFunctions;
 import com.votingapp.models.Chart;
 import com.votingapp.models.NewChart;
 import com.votingapp.models.ReadChart;
@@ -57,30 +55,21 @@ public class MainController {
 	@RequestMapping(value="/create-new-chart", method= RequestMethod.POST)
 	@ResponseBody
 	public String createNewChart(HttpServletRequest request, Model model) throws JsonParseException, JsonMappingException, IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 		
-		String json = "";
-		
-		if(br != null) {
-			try {
-				json = br.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+		HelperFunctions helpers = new HelperFunctions();
+		String json = helpers.jsonToString(request.getInputStream());
 		
 		ObjectMapper objectMapper = new ObjectMapper();
-		
 		Chart chart = objectMapper.readValue(json, Chart.class);
 		
 		new NewChart(chart.getQuestion(),chart.getOption(),chart.getCreator());
-		
 		return "index";
 	}
 	
 	@RequestMapping(value="/get-charts", method=RequestMethod.GET)
 	@ResponseBody
 	public String getCharts () throws JsonProcessingException {
+		
 		ReadChart charts = new ReadChart();
 		ObjectMapper objectMapper = new ObjectMapper();
 		String payload = objectMapper.writeValueAsString(charts.allCharts);
@@ -90,6 +79,7 @@ public class MainController {
 	@RequestMapping(value="/get-chart", method=RequestMethod.GET)
 	@ResponseBody
 	public String getChart (@RequestParam(value="id") int id) throws JsonProcessingException {
+		
 		ReadOneChart charts = new ReadOneChart(id);
 		ObjectMapper objectMapper = new ObjectMapper();
 		String payload = objectMapper.writeValueAsString(charts.allCharts);
@@ -99,27 +89,18 @@ public class MainController {
 	@RequestMapping(value="/submit-vote", method=RequestMethod.POST)
 	@ResponseBody
 	public void submitVote(HttpServletRequest request) throws IOException {
-		System.out.println("called");
-		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 		
-		String json = "";
-		
-		if(br != null) {
-			try {
-				json = br.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+		HelperFunctions helpers = new HelperFunctions();
+		String json = helpers.jsonToString(request.getInputStream());
 		
 		ObjectMapper objectMapper = new ObjectMapper();
-		
 		Chart chart = objectMapper.readValue(json, Chart.class);
 		
+		@SuppressWarnings("unused")
 		VoteChart charts = new VoteChart(chart.getId(), chart.getOption());
-		//return "OK";
 	}
-	//ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
+	
+//ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
 //	ScriptEngine engine = scriptEngineManager.getEngineByName("nashorn");
 //	try {
 //		File jsBuild = new File("/Users/rbertram/Code/java-workspace/VotingApp/src/main/webapp/WEB-INF/views/test.js");

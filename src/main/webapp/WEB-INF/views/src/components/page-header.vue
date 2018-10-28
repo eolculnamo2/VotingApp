@@ -5,7 +5,7 @@
                 MyChart
             </h1></a>
             <div>
-            <a v-if="showHome" href="/new-chart"><p>
+            <a v-if="showHome" href="/"><p>
                 Home
             </p></a>
              <a v-if="showNewChart" href="/new-chart"><p>
