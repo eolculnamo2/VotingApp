@@ -55,7 +55,6 @@ export default {
             })
 
             this.renderChart();
-            //Chart.update();
             
         },
         renderChart() {
@@ -65,7 +64,6 @@ export default {
                 labels: this.chartInfo.option.map( x => x.name),
                 datasets: [
                     {
-                    label: this.chartInfo.option.map( x => x.name),
                     backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
                     data: this.chartInfo.option.map( x => x.value )
                     }

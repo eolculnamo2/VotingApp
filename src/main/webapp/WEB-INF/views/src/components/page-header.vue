@@ -2,17 +2,30 @@
     <div>
         <div class="main-header-wrap">
             <a href="/"><h1>
-                HEADER
+                MyChart
             </h1></a>
-             <a href="/new-chart"><p>
+            <div>
+            <a v-if="showHome" href="/new-chart"><p>
+                Home
+            </p></a>
+             <a v-if="showNewChart" href="/new-chart"><p>
                 New Chart
             </p></a>
+            </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-    name: 'page-header'
+    name: 'page-header',
+    computed: {
+        showHome(){
+            return window.location.pathname !== '/' &&  window.location.pathname !== ''
+        },
+        showNewChart(){
+            return window.location.pathname !== '/new-chart' && window.location.pathname !== '/new-chart/';
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -30,7 +43,7 @@ export default {
     .main-header-wrap {
         display: flex;
         justify-content: space-between;
-        padding: 1em;
+        padding: 1em 5em;
     }
 </style>
 

@@ -24,9 +24,8 @@ export default {
         fetch('/get-charts')
         .then( res => res.json() )
         .then( data => {
-            console.log(data)
             this.dummyData = data
-            });
+        });
     }
 }
 </script>
